@@ -55,6 +55,10 @@ class RollCollectionViewCell: UICollectionViewCell {
         addSubview(rollDescription)
         addSubview(rollcost)
         addSubview(likeButton)
+        setupConstraints()
+    }
+    //MARK: - Methods
+    func setupConstraints() {
         //image constraints
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
@@ -76,6 +80,14 @@ class RollCollectionViewCell: UICollectionViewCell {
         //cost constraints
         rollcost.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         rollcost.centerYAnchor.constraint(equalTo: likeButton.centerYAnchor).isActive = true
+    }
+    
+    override func layoutSubviews() {
+        self.layer.cornerRadius = 5
+        self.layer.shadowRadius = 9
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: 5, height: 8)
+        self.clipsToBounds = false
     }
     
     required init?(coder aDecoder: NSCoder) {
